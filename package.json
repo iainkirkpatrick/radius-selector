@@ -1,0 +1,12 @@
+{
+  "name": "node-server",
+  "version": "0.0.1",
+  "author": "iainkirkpatrick",
+  "main": "server.js",
+  "dependencies": {
+    "express": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
