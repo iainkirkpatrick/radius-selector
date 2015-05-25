@@ -4,7 +4,7 @@ var http = require('http'),
 var app = express();
 var server = http.createServer(app);
 
-server.listen(process.env.PORT || 2323);
+server.listen(2323);
 
 app.use(express.static(__dirname + '/public'));
 
