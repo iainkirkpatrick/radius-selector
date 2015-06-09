@@ -25,12 +25,15 @@ $(document).ready(function() {
   }).addTo(map);
 
   map.on('draw:drawstart', function(e) {
-      featureGroup.clearLayers();
+    $('#radius-display').removeClass('panel-success').addClass('panel-default');
+    $('#radius-meters').html('');
+    featureGroup.clearLayers();
   });
 
   map.on('draw:created', function(e) {
     console.log(e.layer._mRadius);
-    $('#radius-display').html(Math.round(e.layer._mRadius));
+    $('#radius-display').removeClass('panel-default').addClass('panel-success');
+    $('#radius-meters').html(Math.round(e.layer._mRadius));
       featureGroup.addLayer(e.layer);
   });
 })
