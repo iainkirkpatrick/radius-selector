@@ -8,6 +8,7 @@ $(document).ready(function() {
   // map.addLayer(featureGroup);
 
   var drawControl = new L.Control.Draw({
+    position: "topright",
     draw: {
       polyline: false,
       polygon: false,
@@ -18,6 +19,10 @@ $(document).ready(function() {
     //   featureGroup: featureGroup
     // }
   }).addTo(map);
+
+  map.on('draw:drawstart', function(e) {
+      featureGroup.clearLayers();
+  });
 
   map.on('draw:created', function(e) {
     console.log(e.layer._mRadius);
