@@ -17,6 +17,14 @@ body {
 
 #back {
   position: absolute;
+  left: 10px;
+  bottom: 50px;
+  z-index: 10000;
+}
+
+#confirm {
+  position: absolute;
+  right: 10px;
   bottom: 50px;
   z-index: 10000;
 }

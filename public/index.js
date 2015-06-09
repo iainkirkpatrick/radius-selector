@@ -30,6 +30,7 @@ $(document).ready(function() {
 
   map.on('draw:created', function(e) {
     console.log(e.layer._mRadius);
+    $('#radius-display').html(Math.round(e.layer._mRadius));
       featureGroup.addLayer(e.layer);
   });
 })
