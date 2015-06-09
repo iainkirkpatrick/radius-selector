@@ -7,6 +7,10 @@ $(document).ready(function() {
   var featureGroup = L.featureGroup().addTo(map);
   // map.addLayer(featureGroup);
 
+  //set the helper text when drawing circle begins
+  L.drawLocal.draw.handlers.circle.tooltip.start = 'Pinch and drag to set your search radius';
+  L.drawLocal.draw.handlers.simpleshape.tooltip.end = 'Release to finish drawing'
+
   var drawControl = new L.Control.Draw({
     position: "topright",
     draw: {
