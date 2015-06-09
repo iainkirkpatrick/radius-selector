@@ -13,13 +13,14 @@ $(document).ready(function() {
       polygon: false,
       rectangle: false,
       marker: false
-    },
-    edit: {
-      featureGroup: featureGroup
     }
+    // edit: {
+    //   featureGroup: featureGroup
+    // }
   }).addTo(map);
 
   map.on('draw:created', function(e) {
+    console.log(e.layer._mRadius);
       featureGroup.addLayer(e.layer);
   });
 })

@@ -1,2 +1,2 @@
-# node-server
-a wee server to shove JS apps on top of.
+# radius-selector
+a demo stand-alone page for drawing a circle on a map, and recording the radius 
