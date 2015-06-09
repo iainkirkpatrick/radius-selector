@@ -12,7 +12,7 @@ $(document).ready(function() {
   L.drawLocal.draw.handlers.simpleshape.tooltip.end = 'Release to finish drawing'
 
   var drawControl = new L.Control.Draw({
-    position: "topright",
+    position: "topleft",
     draw: {
       polyline: false,
       polygon: false,
@@ -33,7 +33,7 @@ $(document).ready(function() {
   map.on('draw:created', function(e) {
     console.log(e.layer._mRadius);
     $('#radius-display').removeClass('panel-default').addClass('panel-success');
-    $('#radius-meters').html(Math.round(e.layer._mRadius));
-      featureGroup.addLayer(e.layer);
+    $('#radius-meters').html(Math.round(e.layer._mRadius) + " meters");
+    featureGroup.addLayer(e.layer);
   });
 })
