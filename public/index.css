@@ -28,3 +28,14 @@ body {
   bottom: 50px;
   z-index: 10000;
 }
+
+.panel {
+  width: 100px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  z-index: 10000;
+}
