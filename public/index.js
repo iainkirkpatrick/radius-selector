@@ -9,6 +9,7 @@ $(document).ready(function() {
   //get user geolocation
   navigator.geolocation.getCurrentPosition(function(pos){
     position = pos.coords;
+    console.log(position);
     map.setView([position.latitude, position.longitude], 13)
   });
 
@@ -35,13 +36,18 @@ $(document).ready(function() {
   map.dragging.disable();
 
   map.on('draw:drawstart', function(e) {
+    // console.log(e);
     $('#radius-display').removeClass('panel-success').addClass('panel-default');
     $('#radius-meters').html('');
     featureGroup.clearLayers();
   });
 
   map.on('draw:created', function(e) {
-    console.log(e.layer._mRadius);
+    console.log(e);
+
+    e.layer._latlng.lat = position.latitude;
+    e.layer._latlng.lng = position.longitude;
+
     $('#radius-display').removeClass('panel-default').addClass('panel-success');
     $('#radius-meters').html(Math.round(e.layer._mRadius) + " meters");
     featureGroup.addLayer(e.layer);
