@@ -4,17 +4,20 @@ $(document).ready(function() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiZW52aW50YWdlIiwiYSI6Inh6U0p2bkEifQ.p6VrrwOc_w0Ij-iTj7Zz8A';
   // Create a map in the div #map
   var map = L.mapbox.map('map', 'envintage.i9eofp14');
-  var position;
+
+  //currently a hack to allow leaflet.draw to see the geolocation - store as global
+  //else would do this:
+  // var position;
 
   //get user geolocation
   navigator.geolocation.getCurrentPosition(function(pos){
-    position = pos.coords;
-    console.log(position);
-    map.setView([position.latitude, position.longitude], 13)
+    // position = pos.coords;
+    geolocation = pos.coords
+    map.setView([geolocation.latitude, geolocation.longitude], 13);
+    L.marker([geolocation.latitude, geolocation.longitude]).addTo(map);
   });
 
   var featureGroup = L.featureGroup().addTo(map);
-  // map.addLayer(featureGroup);
 
   //set the helper text when drawing circle begins
   L.drawLocal.draw.handlers.circle.tooltip.start = 'Pinch and drag to set your search radius';
@@ -28,9 +31,6 @@ $(document).ready(function() {
       rectangle: false,
       marker: false
     }
-    // edit: {
-    //   featureGroup: featureGroup
-    // }
   }).addTo(map);
 
   map.dragging.disable();
@@ -43,10 +43,9 @@ $(document).ready(function() {
   });
 
   map.on('draw:created', function(e) {
-    console.log(e);
 
-    e.layer._latlng.lat = position.latitude;
-    e.layer._latlng.lng = position.longitude;
+    e.layer._latlng.lat = geolocation.latitude;
+    e.layer._latlng.lng = geolocation.longitude;
 
     $('#radius-display').removeClass('panel-default').addClass('panel-success');
     $('#radius-meters').html(Math.round(e.layer._mRadius) + " meters");
